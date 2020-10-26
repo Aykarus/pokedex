@@ -193,7 +193,9 @@ export default class Pokemon extends Component {
                 <Card>
                     <Card.Header>
                         <Row className="col-5">
-                            {this.state.pokemonIndex}
+                            <div className="col-5">
+                                <h5>{this.state.pokemonIndex}</h5>
+                            </div>
                             <div className="col-7">
                                 <div className="float-right">
                                     {this.state.types.map(type => (
