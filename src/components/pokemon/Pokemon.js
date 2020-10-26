@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, Image, ProgressBar } from 'react-bootstrap';
 
 const TYPE_COLORS = {
     bug: 'B1C12E',
@@ -189,14 +189,14 @@ export default class Pokemon extends Component {
     }
     render() {
         return (
-            <Col>
+            <Col className="mt-5">
                 <Card>
                     <Card.Header>
-                        <Row className="col-5">
-                            <div className="col-5">
-                                <h5>{this.state.pokemonIndex}</h5>
-                            </div>
-                            <div className="col-7">
+                        <Row className="">
+                            <Col>
+                                <h5 className="float-left">{this.state.pokemonIndex}</h5>
+                            </Col>
+                            <Col>
                                 <div className="float-right">
                                     {this.state.types.map(type => (
                                         <span
@@ -215,9 +215,168 @@ export default class Pokemon extends Component {
                                         </span>
                                     ))}
                                 </div>
-                            </div>
+                            </Col>
                         </Row>
                     </Card.Header>
+                    <Card.Body>
+                        <Row className="align-items-center">
+                            <Col md="3">
+                                <Image src={this.state.imageUrl} className="mx-auto card-img-top" />
+                            </Col>
+                            <Col>
+                                <h4 className="mx-auto mb-3">
+                                    {this.state.name
+                                        .toLowerCase()
+                                        .split(' ')
+                                        .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                                        .join(' ')}
+                                </h4>
+                                <Row>
+                                    <Col md={this.state.statTitleWidth}>
+                                        Hp
+                                    </Col>
+                                    <Col md={this.state.statBarWidth}>
+                                        <ProgressBar now={this.state.stats.hp} label={`${this.state.stats.hp}`} />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={this.state.statTitleWidth}>
+                                        Attack
+                                    </Col>
+                                    <Col md={this.state.statBarWidth}>
+                                        <ProgressBar now={this.state.stats.attack} label={`${this.state.stats.attack}`} />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={this.state.statTitleWidth}>
+                                        Defence
+                                    </Col>
+                                    <Col md={this.state.statBarWidth}>
+                                        <ProgressBar now={this.state.stats.defense} label={`${this.state.stats.defense}`} />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={this.state.statTitleWidth}>
+                                        Speed
+                                    </Col>
+                                    <Col md={this.state.statBarWidth}>
+                                        <ProgressBar now={this.state.stats.speed} label={`${this.state.stats.speed}`} />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={this.state.statTitleWidth}>
+                                        Sp Attack
+                                    </Col>
+                                    <Col md={this.state.statBarWidth}>
+                                        <ProgressBar now={this.state.stats.specialAttack} label={`${this.state.stats.specialAttack}`} />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={this.state.statTitleWidth}>
+                                        Sp Defence
+                                    </Col>
+                                    <Col md={this.state.statBarWidth}>
+                                        <ProgressBar now={this.state.stats.specialDefense} label={`${this.state.stats.specialDefense}`} />
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col className="mt-5">
+                                <p>{this.state.description}</p>
+                            </Col>
+                        </Row>
+                        <hr />
+                        <Card.Body>
+                            <Card.Title>Profile</Card.Title>
+                            <Row md="12">
+                                <Col md="6">
+                                    <Row>
+
+                                        <Row className="align-items-center col-12">
+                                            <Col><h6 className="float-right">Height:</h6></Col>
+                                            <Col><h6 className="float-left">{this.state.height} ft.</h6></Col>
+                                        </Row>
+
+
+                                        <Row className="col-12">
+                                            <Col ><h6 className="float-right">Weight:</h6></Col>
+                                            <Col><h6 className="float-left">{this.state.weight} lbs</h6></Col>
+                                        </Row>
+
+                                        <Row className="col-12">
+                                            <Col><h6 className="float-right">Catch Rate:</h6></Col>
+                                            <Col><h6 className="float-left">{this.state.catchRate}%</h6></Col>
+                                        </Row>
+
+                                        <Row className="col-12">
+                                            <Col><h6 className="float-right">Gender Ratio:</h6></Col>
+                                            <Col className="">
+                                                <div className="progress">
+                                                    <div
+                                                        className="progress-bar"
+                                                        role="progressbar"
+                                                        style={{
+                                                            width: `${this.state.genderRatioFemale}%`,
+                                                            backgroundColor: '#c2185b'
+                                                        }}
+                                                        aria-valuenow="15"
+                                                        aria-valuemin="0"
+                                                        aria-valuemax="100"
+                                                    >
+                                                        <small>{this.state.genderRatioFemale}</small>
+                                                    </div>
+                                                    <div
+                                                        className="progress-bar"
+                                                        role="progressbar"
+                                                        style={{
+                                                            width: `${this.state.genderRatioMale}%`,
+                                                            backgroundColor: '#1976d2'
+                                                        }}
+                                                        aria-valuenow="30"
+                                                        aria-valuemin="0"
+                                                        aria-valuemax="100"
+                                                    >
+                                                        <small>{this.state.genderRatioMale}</small>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                        </Row>
+
+
+
+
+                                    </Row>
+                                </Col>
+
+                                <Col md="6">
+                                    <Row>
+                                        <Row className="col-12">
+                                            <Col><h6 className="float-right">Egg Groups:</h6></Col>
+                                            <Col ><h6 className="float-left">{this.state.eggGroups}</h6></Col>
+                                        </Row>
+
+                                        <Row className="col-12">
+                                            <Col ><h6 className="float-right">Hatch Steps:</h6></Col>
+                                            <Col ><h6 className="float-left">{this.state.hatchSteps}</h6></Col>
+                                        </Row>
+
+
+                                        <Row className="col-12"></Row>
+                                        <Col><h6 className="float-right">Abilities:</h6></Col>
+                                        <Col><h6 className="float-left">{this.state.abilities}</h6></Col>
+
+                                        <Row className="col-12">
+                                            <Col><h6 className="float-right">EVs:</h6></Col>
+                                            <Col><h6 className="float-left">{this.state.evs}</h6></Col>
+                                        </Row>
+
+                                    </Row>
+                                </Col>
+                            </Row>
+                        </Card.Body>
+
+                    </Card.Body>
 
                 </Card>
             </Col>
