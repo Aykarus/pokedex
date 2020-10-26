@@ -362,9 +362,11 @@ export default class Pokemon extends Component {
                                         </Row>
 
 
-                                        <Row className="col-12"></Row>
-                                        <Col><h6 className="float-right">Abilities:</h6></Col>
-                                        <Col><h6 className="float-left">{this.state.abilities}</h6></Col>
+                                        <Row className="col-12">
+                                            <Col><h6 className="float-right">Abilities:</h6></Col>
+                                            <Col><h6 className="float-left">{this.state.abilities}</h6></Col>
+                                        </Row>
+
 
                                         <Row className="col-12">
                                             <Col><h6 className="float-right">EVs:</h6></Col>
