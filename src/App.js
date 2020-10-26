@@ -16,7 +16,7 @@ function App() {
           <Navbar.Brand href="#home">Pokedex</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
+            <Nav className="mx-auto">
               <Nav.Link href="#List">List</Nav.Link>
               <Nav.Link href="#Favorite">Favorite</Nav.Link>
             </Nav>
