@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import { Container } from 'react-bootstrap';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Pokemon from './components/pokemon/Pokemon';
+import { ReactComponent as Logo } from './Logo.svg'
 
 function App() {
   return (
@@ -12,11 +13,14 @@ function App() {
     <Router>
       <div className="App">
 
-        <Navbar collapseOnSelect expand="lg" bg="danger" variant="dark">
-          <Navbar.Brand href="#home">Pokedex</Navbar.Brand>
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+          <Navbar.Brand href="#home">
+            <Logo width="40" height="40"></Logo>
+            Pokèdex
+            </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mx-auto">
+            <Nav className="ml-auto">
               <Nav.Link href="#List">List</Nav.Link>
               <Nav.Link href="#Favorite">Favorite</Nav.Link>
             </Nav>
